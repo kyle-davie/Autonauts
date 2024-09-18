@@ -24,46 +24,30 @@ export function drawGenerator(x, y) {
     document.body.appendChild(generator)
 }
 
-export function drawLine(x1, y1, x2, y2 ) {
-    // Bresenham's Line Algorithm
-    const squareSize = 5;
-    const points = [];
+export function drawLine(x1, y1, x2, y2) {
+    const start = { x: x1, y: y1 };
+    const end = { x: x2, y: y2 };
+    const boxSpacing = 20;
+    const squareSize = 20;
 
-    const dx = Math.abs(x2 - x1);
-    const dy = Math.abs(y2 - y1);
-    const sx = (x1 < x2) ? 1 : -1;
-    const sy = (y1 < y2) ? 1 : -1;
-    let err = dx - dy;
+    const distance = Math.sqrt(Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2));
+    const numBoxes = Math.ceil(distance / boxSpacing);
+    const dx = (end.x - start.x) / (numBoxes - 1);
+    const dy = (end.y - start.y) / (numBoxes - 1);
 
-    let x = x1;
-    let y = y1;
-
-    while (true) {
-        points.push([x, y]);
-
-        if (x === x2 && y === y2) break;
-
-        const e2 = err * 2;
-        if (e2 > -dy) {
-            err -= dy;
-            x += sx;
-        }
-        if (e2 < dx) {
-            err += dx;
-            y += sy;
-        }
-    }
-
-    points.forEach(point => {
-        const [x, y] = point;
+    for (let i = 0; i < numBoxes; i++) {
+        const x = start.x + dx * i;
+        const y = start.y + dy * i; 
+        console.log(`end: ${end.x}, ${end.y} start: ${start.x}, ${start.y} scout.js`);
         const square = document.createElement('div');
         square.className = 'square';
         square.style.backgroundColor = 'red';
-        square.position = 'absolute';
+        square.style.position = 'absolute'; 
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;
         square.style.left = `${x}px`;
         square.style.top = `${y}px`;
         document.body.appendChild(square);
-    });
+    }
 }
+
