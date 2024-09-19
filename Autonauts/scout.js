@@ -20,6 +20,7 @@ export function drawGenerator(x, y) {
     generator.style.position = 'absolute';
     generator.style.left = `${x - 10}px`;
     generator.style.top = `${y - 10}px`;
+    //
     
     document.body.appendChild(generator)
 }
@@ -27,21 +28,21 @@ export function drawGenerator(x, y) {
 export function drawLine(x1, y1, x2, y2) {
     const start = { x: x1, y: y1 };
     const end = { x: x2, y: y2 };
-    const boxSpacing = 20;
-    const squareSize = 20;
+    const boxSpacing = 9;
+    const squareSize = 10;
 
     const distance = Math.sqrt(Math.pow(end.x - start.x, 2) + Math.pow(end.y - start.y, 2));
     const numBoxes = Math.ceil(distance / boxSpacing);
     const dx = (end.x - start.x) / (numBoxes - 1);
     const dy = (end.y - start.y) / (numBoxes - 1);
 
-    for (let i = 0; i < numBoxes; i++) {
+    for (let i = 2; i < numBoxes; i++) {
         const x = start.x + dx * i;
         const y = start.y + dy * i; 
         console.log(`end: ${end.x}, ${end.y} start: ${start.x}, ${start.y} scout.js`);
         const square = document.createElement('div');
         square.className = 'square';
-        square.style.backgroundColor = 'red';
+        square.style.backgroundColor = 'rgba(40, 194, 214, 0.637)';
         square.style.position = 'absolute'; 
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;

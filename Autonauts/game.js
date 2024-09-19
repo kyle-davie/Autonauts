@@ -9,3 +9,4 @@ export function spawnGenerator(event) {
 };
 
 document.addEventListener('mousedown', spawnGenerator);
+//
