@@ -2,6 +2,28 @@
 
 var globalGenerators =  []
 let generatorCount = 0;
+const buttonContainer = document.getElementById("btnContainer");
+let coordsBtnContainer = [];
+
+
+function ifOverButtons(event) {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export function drawGenerator(x, y) {
     const generator = document.createElement("div");
