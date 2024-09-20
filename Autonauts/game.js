@@ -9,7 +9,6 @@ export function draw(event) {
     if (mode == 1) {
         drawGenerator(x, y);
     } else if (mode == 2) {
-        
         if (firstClick === null) {
             firstClick = { x, y };
         } else if (secondClick === null) {
