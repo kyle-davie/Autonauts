@@ -1,23 +1,30 @@
 html, body {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 body {
     background-color: rgb(128, 136, 55);
 }
 
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .button-wrapper {
     display: flex;
     gap: 10px;
-    margin-left: 0.25vw;
-    margin-top: 0.5vh;
     position: fixed;
     z-index: 9999;
     padding: 20px;
+    background-color: #D6D6E7;
+    width: 60%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-/* CSS */
 .button-30 {
   align-items: center;
   appearance: none;
@@ -65,5 +72,27 @@ body {
 
 .line1 {
   background-color: black;
+}
+
+.buildMenu {
+  position: absolute;
+  display: grid;
+  place-content: center;
+  align-content: space-around;
+  width: 30vw;
+  height: 40vh;
+  top: 40%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eeeefa;
+  font-family: "JetBrains Mono",monospace;
+  border-radius: 8%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 9999;
+}
+
+.buildMenu h1 {
+  display: grid;
+  place-self: center;
 }
 

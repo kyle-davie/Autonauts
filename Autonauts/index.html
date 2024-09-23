@@ -7,9 +7,19 @@
     <title>Autonauts</title>
 </head>
 <body>
-    <div class="button-wrapper" id="btnContainer">
-        <button type="button" class="button-30" id="buildBtn">Build</button>
-        <button type="button" class="button-30" id="connectBtn" >Connect</button>
+    <div class="wrapper">
+        <div class="button-wrapper" id="btnContainer">
+            <button type="button" class="button-30" id="buildBtn">Build</button>
+            <button type="button" class="button-30" id="connectBtn" >Connect</button>
+        </div>
+    </div>
+    <div class="buildMenu" id="buildMenu">
+        <h1>Buildings</h1>
+        <div class="btnChoice">
+            <button class="button-30" type="button" id="buildMenuGeneratorBtn">Generator</button>
+            <button class="button-30" type="button" id="buildMenuCrafterBtn">Crafter</button>
+        </div>
+        <button class="button-30" type="button" id="closeBtn">close</button>
     </div>
     <script type="module" src="game.js"></script>
 </body>

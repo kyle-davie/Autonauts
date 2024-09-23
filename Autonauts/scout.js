@@ -7,9 +7,11 @@ let generatorCount = 0;
 let lineCount = 0;
 let crafterCount = 0;
 export let mode = 1;
-let btnBuild = document.getElementById("buildBtn");
+let btnBuildGenerator = document.getElementById("buildMenuGeneratorBtn");
+let btnBuildCrafter = document.getElementById("buildMenuCrafterBtn");
 let btnConnect = document.getElementById("connectBtn");
-btnBuild.addEventListener('click', buildMode);
+btnBuildCrafter.addEventListener('click', buildMode2);
+btnBuildGenerator.addEventListener('click', buildMode);
 btnConnect.addEventListener('click', connectMode);
 
 function buildMode () {
@@ -22,8 +24,15 @@ function connectMode() {
     console.log("connect");
 }
 
+function buildMode2() {
+    mode = 3;
+    console.log("build2");
+}
+
 function ifOverButtons(event, x, y) {
     const buttonWrapper = document.getElementById('btnContainer');
+    const buildMenu = document.getElementById('buildMenu');
+    const rect2 = buildMenu.getBoundingClientRect();
     const rect = buttonWrapper.getBoundingClientRect();
     let isOver = false;
     
@@ -52,7 +61,7 @@ export function drawGenerator(x, y) {
         generator.style.backgroundColor = "#bd7431"
         generator.style.width = '20px';
         generator.style.height = '20px';
-        generator.style.zIndex = 9999;
+        generator.style.zIndex = 9990;
         generator.className = 'factory'
         generator.style.boxShadow = '1px 1px 3px 0px rgba(0, 0, 0, 1)';
         generatorCount++;
@@ -73,23 +82,22 @@ export function drawCrafter(x, y) {
     if (!ifOverButtons(event, x, y)) {
         crafterCount++;
         const crafter = document.createElement("div");
-        crafter.style.backgroundColor = "#bd7431"
+        crafter.style.backgroundColor = "#7eeb7a"
         crafter.style.width = '20px';
         crafter.style.height = '20px';
-        crafter.style.zIndex = 9999;
+        crafter.style.zIndex = 9990;
         crafter.className = 'crafter'
         crafter.style.boxShadow = '1px 1px 3px 0px rgba(0, 0, 0, 1)';
-        generatorCount++;
-        crafter.id = `factory${generatorCount}`;
+        crafter.id = `crafter${crafterCount}`;
         globalCrafters.push({
             name: `crafter${crafterCount}`,
             x: x,
             y: y
         });
-        generator.style.position = 'absolute';
-        generator.style.left = `${x - 10}px`;
-        generator.style.top = `${y - 10}px`;
-        document.body.appendChild(generator)
+        crafter.style.position = 'absolute';
+        crafter.style.left = `${x - 10}px`;
+        crafter.style.top = `${y - 10}px`;
+        document.body.appendChild(crafter);
     }
 }
 
@@ -116,6 +124,7 @@ export function drawLine(x1, y1, x2, y2) {
             square.style.position = 'absolute'; 
             square.style.width = `${squareSize}px`;
             square.style.height = `${squareSize}px`;
+            square.style.zIndex = 9989;
             square.className = `line${lineCount}`;
             square.style.left = `${x}px`;
             square.style.top = `${y}px`;
